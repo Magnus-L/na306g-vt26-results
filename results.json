@@ -1,0 +1,147 @@
+{
+  "_meta": {
+    "title": "Assignment Results",
+    "course": "NA306G",
+    "semester": "Spring 2026",
+    "assignment": "Econometrics assignment",
+    "valid_until": "2026-04-22",
+    "generated": "2026-04-15 16:35",
+    "greeting": "Hi, I have now examined your submitted assignment, with your grade and potentially a comment or two below. Everyone has done a decent job, well done!",
+    "closing": "The results will be reported in Ladok shortly. Good luck in your future studies!\nKind regards,\nMagnus",
+    "general_comments": "A few general things to take with you:\n\n1. The assignment data is based on three datasets — Serrano, Job ads, and Occupational information. As the brief's Data-section instructions say, the report should, for the data you use, describe the source of data, type of data (e.g., cross-section, panel, etc.), year(s) of observations, and population. Read the brief's short description of each of the three datasets — the observation unit is stated for each — and work out what type of data each one is before writing the description.\n\n2. A personal preference, useful for thesis work: I find the descriptive statistics table easier to read when the variables are presented in their original, non-logged form — it makes it easier to see whether the values look sensible and to relate them to economic magnitudes. The logged versions can stay in the regression output.\n\n3. When interpreting your results, state how much the response variable changes and in what units when the AI variable changes — not only whether a coefficient is statistically significant. The magnitude is what the reader cares about most."
+  },
+  "1": {
+    "grade": "D",
+    "feedback": "Rapporten följer en tydlig struktur och do-filen genomför analyserna som uppgiften kräver, inklusive pooled OLS. Flera brister rör dock presentationen i själva rapporten. Tabell 3 saknar en pooled OLS-kolumn trots att do-filen kör OLS — resultaten presenteras alltså aldrig i rapporttexten. Formuleringen \"0,5 av förklaringsvariablerna kan förklara 50 procent\" är en feltolkning av R²: värdet 0,50 innebär att modellen förklarar 50 procent av variationen i den beroende variabeln. Avsnitt 7.1 saknar ett formellt heteroskedasticitetstest (t.ex. Breusch–Pagan); robust-kommandot är en åtgärd snarare än en diagnostik. Exklusionsrestriktionen nämns inte som ett tredje, separat IV-villkor. År-inkonsistenser föreligger mellan text och referenslista: Babina et al. citeras som (2023) i texten men listas som (2024), och Engberg et al. citeras som (2025) i texten men listas som (2024). Den beskrivande texten för ai_dummy-medelvärdet stämmer inte med Tabell 1 (texten anger 0,96; tabellen visar 0,096). Det underliggande analytiska arbetet är solid — punkterna ovan handlar framför allt om att det som gjorts också syns i rapporttexten.",
+    "revision_required": false,
+    "oral_followup": false
+  },
+  "2": {
+    "grade": "C",
+    "feedback": "The report demonstrates good progressive model-building across five specifications (three pooled OLS with successive controls, FE and RE) and shows genuine engagement with the Hausman model selection framework. A few observations. The OLS(1) AI-adoption coefficient of 0.874 is interpreted as an 87.4 per cent increase in net sales; for a dummy variable in a log-level model the exact interpretation is (e^0.874 − 1) ≈ 140 per cent, and the linear approximation diverges substantially from the exact value when the coefficient is this large. The reported Hausman p-value of 0.1789 should be checked against the Stata log, because the model-choice argument depends on it being correctly reproduced from the estimation output. The exclusion restriction is not discussed as a distinct IV condition. The literature summaries describe findings but do not state which econometric methods each study used, which is one of the template points the report is asked to cover. The model-building and specification logic are the strengths of this report; the observations above are about interpretation precision and diagnostic verification.",
+    "revision_required": false,
+    "oral_followup": false
+  },
+  "3": {
+    "grade": "E",
+    "feedback": "The report has a clear structure, a testable hypothesis, and runs the required specifications (pooled OLS and fixed effects). Several substantive issues remain. Table 3 contains internal contradictions that affect the interpretation of the results. The table note states \"The parentheses indicates standard errors\", but the parenthesised values (5.18, 16.93, 6.27) are several times larger than their paired coefficients (0.650, 0.907, 0.109), which is implausible as standard errors but fits the pattern of t-statistics — and the significance stars printed in the same row match those values read as t-statistics rather than standard errors. The text in the results section then reasons from the stated label (\"the standard error is significantly higher than the beta-coefficient ... the calculated t-value is therefore nowhere near the critical value ... the result is not significant\"), which would be internally valid if the parenthesised values really were standard errors, but directly contradicts the significance stars in the same table. The note, the stars, and the text interpretation need to be made consistent, and the parentheses either need to be converted to standard errors or the note and text corrected. The significance legend uses a single asterisk for all three levels (\"* p<0.1; * p<0.05; * p<0.01\") rather than *, **, ***. \"table x\" in the conclusion should read \"Table 3\". The diagnostics section heading appears but no content appears underneath it. The exclusion restriction is not stated as a separate IV condition. The observation count drops from 3,131 to 2,404 between the descriptive statistics and the regression results without explanation. The structural framework is in place; the grade reflects the table consistency problems, the empty diagnostics section, and the other points above.",
+    "revision_required": false,
+    "oral_followup": false
+  },
+  "4": {
+    "grade": "D",
+    "feedback": "The report covers the required analytical framework and presents three tables with reasonable progressive structure. A few observations. No formal regression equation appears anywhere in the report — the model is only described in prose, which makes the specification harder to verify. Table 1 lacks a median column. Table 3 reports t-statistics in parentheses while Tables 4 and 5 use standard errors; the inconsistency makes the tables harder to compare. Section 4.4 claims that correlations of log-transformed variables \"reflect percentage changes rather than absolute levels\" — correlations are unit-free by construction, so log-transformation changes the variables but not the interpretation of the correlation. The exclusion restriction is not named as a third IV condition. Year fixed effects are absent from the regressions, which leaves macroeconomic shocks uncontrolled. The analytical structure is in place; the shortcomings are mostly about formal specification and consistency across tables.",
+    "revision_required": false,
+    "oral_followup": false
+  },
+  "5": {
+    "grade": "C",
+    "feedback": "The report has a clear structure covering all required sections, states a hypothesis explicitly (H1: firms with high AI exposure in knowledge-intensive services have higher sales than firms with low AI exposure), runs the three-way comparison (pooled OLS, fixed effects, random effects), uses the xtoverid (Sargan–Hansen) test for FE versus RE selection (p = 0.0038, rejects RE in favour of FE), reports a heteroskedasticity test with its p-value and a VIF test with the mean value (1.84), and includes a reference list and an AI-use appendix in Section 10. The sample-selection steps (13,514 → 2,086 → 2,059 → 1,993) are described. A few observations. No formal regression equation is written out in Section 5; the specification is described in prose rather than algebraically with intercept, error term, and fixed effects, which the template asks for. The Table 3 note states that \"Både beroende och kontroll variabeln är logaritmerad leder det till att koefficienten kan tolkas som en elasticitet\" — but frs21_aioe is not log-transformed (Table 1), so the coefficient on the AI exposure variable is not an elasticity in the usual sense; only the coefficient on ln_employees can be read that way. The IV discussion explains why no IV estimation is attempted (no credible instrument available) but does not name the three formal IV conditions (relevance, exogeneity, exclusion restriction). The AI appendix in Section 10 identifies the tool as \"Chat GDP-5.4 thinking\", which does not correspond to a released model name. There is a typo \"eich\" for \"och\" in Section 5. The research question, framework, and analytical sequence are appropriate; the observations above are about specification precision, interpretation of the AI coefficient, and IV formalism.",
+    "revision_required": false,
+    "oral_followup": false
+  },
+  "6": {
+    "grade": "E",
+    "feedback": "The report poses a relevant question, states a clear hypothesis (\"AI adoption is positively associated with firm performance\", p.3), specifies the baseline equation with firm and year fixed effects, and runs pooled OLS and FE with a Hausman-selected specification as the preferred model. Several points need to be addressed in the revision to reach the passing threshold. The AI-use appendix is absent — a compulsory formal component listing tool, version, and all prompts, regardless of whether AI tools were used in the work. The theory section (Section 3) builds the argument from general economic intuition but does not cite any theoretical or empirical work; the report template explicitly requires references in this section. The diagnostic discussion on p.7 describes the tests rather than reporting them: the heteroskedasticity check states only that \"the variance of the error term is not constant\" without a test name, test statistic, or p-value. The tables are not produced using outreg and asdoc, as required. The underlying research design and hypothesis are sound; the revision is primarily about completing the AI-use appendix, adding references to the theory section, and reporting concrete diagnostic values in Section 7.",
+    "revision_required": true,
+    "oral_followup": false,
+    "revision_note": "You will receive an E provided the revision is completed satisfactorily. Address the points listed in the feedback below and resubmit by 1 May 2026."
+  },
+  "7": {
+    "grade": "C",
+    "feedback": "The report follows the required structure and includes a robustness check showing how year fixed effects affect the AI coefficient — this shows genuine analytical judgement and is a real strength of the submission. A few observations. The AI-use appendix is absent, which is a serious formal gap reflected in the grade. Decimal separators are inconsistent across tables (commas in Table 4, periods in Table 3). The written regression equation does not include year fixed effects even though the tables use them. The equity ratio interpretation shifts between \"14.6 percentage points\" (OLS) and \"7.1 percent\" (FE) without resolving which unit is correct for a ratio variable in a log-level model. The Hausman test result (chi2=147.65, p=0.000) appears in prose rather than in a table, so the reader cannot verify it from the report alone. The analytical judgement shown in the robustness check sits above the grade band overall; the missing AI appendix is the largest single factor holding the grade back.",
+    "revision_required": false,
+    "oral_followup": false
+  },
+  "8": {
+    "grade": "B",
+    "feedback": "A well-executed report with clear empirical design, thorough data documentation, and a dual-hypothesis framework linking H1 and H2 that is a real analytical strength. A few targeted observations. The exclusion restriction is not named as a distinct third IV condition separate from exogeneity. The AIOE coefficient of −0.005 is presented without contextualising it against the sample mean of vacancies per employee (0.048) — as a fraction of the mean it equals roughly a 10 per cent reduction, which is economically meaningful. The conclusion does not name specific omitted variables that theory would suggest as likely candidates (managerial quality and R&D intensity would both be plausible). This is a strong report overall — the points above would polish an already competent piece of work.",
+    "revision_required": false,
+    "oral_followup": false
+  },
+  "10": {
+    "grade": "C",
+    "feedback": "En välstrukturerad och analytiskt stark rapport. Litteraturöversikten är genomarbetad, modellspecifikationen är genomtänkt (inklusive robot-exponering och ingenjörsandel som kontroller), och de diagnostiska testerna (Modified Wald, VIF) är korrekt rapporterade. Två observationer. I IV-diskussionen likställs exogenitet med exklusionsrestriktionen, vilka är separata villkor och behöver anges var för sig. Koefficientförändringen mellan OLS- och FE-specifikationerna diskuteras inte — en sådan diskussion hade pekat mot möjlig utelämnad-variabel-bias och stärkt resultatavsnittet. AI-bilagan och referenslistan är båda närvarande och tillräckliga. Sammantaget ett mycket kompetent arbete; observationerna ovan handlar om precision i IV-ramverket och tolkning av resultaten.",
+    "revision_required": false,
+    "oral_followup": false
+  },
+  "11": {
+    "grade": "E",
+    "feedback": "The report demonstrates a competent analytical approach with appropriate model selection and a clear overall structure. Several observations. Section 7 uses the correlation matrix alone to assess multicollinearity; formal VIF statistics would provide a stronger check. The IV discussion names relevance and exogeneity but does not state the exclusion restriction as a distinct third condition. The informal phrasing in several places (e.g., \"brain power\", \"danger zone\", \"front line\") sits below the academic register expected in the report. The do-file's Hausman test local macro includes y_vac as a regressor, which is a specification error that affects the test result. The analytical framework is sound — the observations above are mostly about formal precision and technical cleanup.",
+    "revision_required": false,
+    "oral_followup": false
+  },
+  "12": {
+    "grade": "C",
+    "feedback": "Rapporten genomför en bra analys med tre estimeringsstrategier (OLS, FE och IV). Några observationer. Jämförelsen mellan OLS-koefficienten för AI (0,19) och FE-koefficienten (0,06) diskuteras inte — dämpningen är informativ om möjlig utelämnad-variabel-bias och hade stärkt resultatavsnittet. Studien väljer fixed effects som huvudspecifikation men gör ingen formell jämförelse mellan FE och random effects (t.ex. ett Hausman-test); instruktionens krav på att testa antagandet som ligger bakom random effects och dra en slutsats är därmed inte uppfyllt. IV-koefficienten på 4,05 är stor relativt medelvakansgraden (0,33), men denna storleksordning ifrågasätts inte kritiskt i texten. Exklusionsrestriktionen nämns inte som ett tredje, separat IV-villkor. Det metodologiska ramverket är ambitiöst och välvalt — punkterna ovan handlar främst om tolkning och kritisk reflektion över resultaten.",
+    "revision_required": false,
+    "oral_followup": false
+  },
+  "13": {
+    "grade": "E",
+    "feedback": "Rapporten visar en solid analytisk ansats med välmotiverade metoder, och AI-bilagan är närvarande med tolv konkreta prompter. Några observationer. Avsnittet om statistiska test saknar ett formellt heteroskedasticitetstest med teststatistika och p-värde — robusta standardfel är en åtgärd, inte en diagnostik. IV-diskussionen namnger två villkor men inte exklusionsrestriktionen som separat tredje villkor. Tabell 3 presenterar bara FE och RE, medan texten diskuterar en OLS-koefficient på 1,567 som inte finns som kolumn i tabellen. Referensen \"Google (2026)\" med hämtdatum 2026-03-25 är ett datumfel. Regressionerna använder 5 706 observationer medan urvalet har 5 713, utan att differensen förklaras. Analysen och metodvalet är rimliga — observationerna ovan gäller främst formell diagnostik och konsistens mellan text och tabell.",
+    "revision_required": false,
+    "oral_followup": false
+  },
+  "14": {
+    "grade": "B",
+    "feedback": "A well-structured report with clear results interpretation and a core finding — the FE coefficient on AI adoption (0.663) approximately equals the sample mean of vacancies per employee (0.63) — that is striking and worth foregrounding. A few observations. The exclusion restriction is not named as a distinct third IV condition separate from exogeneity. The Hausman test statistic (chi-squared and p-value) is not reported explicitly; only the model-choice conclusion is stated, so the reader cannot verify the test. The control variables are interpreted individually but their joint significance is not tested or discussed; the instruction explicitly asks whether the controls' coefficients are jointly significant, and this requires an F-test of the control block (most easily run with unadjusted standard errors). The correlation between log net sales and log capital stock (0.615) is the highest inter-regressor correlation but receives only a dismissive sentence in the multicollinearity discussion. The economic magnitude of the FE(5) coefficient — approximately the mean of the dependent variable — is not discussed. Strong empirical work overall; the points above would sharpen an already solid report.",
+    "revision_required": false,
+    "oral_followup": false
+  },
+  "15": {
+    "grade": "C",
+    "feedback": "The report handles the main result competently and contextualises the AI coefficient (0.030) against the sample mean of vacancies per employee (0.052), which is the correct way to evaluate economic magnitude in this setting. Several observations. A formal heteroskedasticity test (e.g. Breusch–Pagan or White) is not reported — clustered standard errors are an adjustment, not a diagnostic. The IV section names relevance and exogeneity but not the exclusion restriction as a separate third condition. The Felten et al. (2021) reference lacks page ranges and DOI. The analytical core is solid; the observations above are mostly about formal completeness.",
+    "revision_required": false,
+    "oral_followup": false
+  },
+  "17": {
+    "grade": "C",
+    "feedback": "The report demonstrates a well-structured FE analysis with appropriate model selection via the Hausman test, a substantive IV discussion with a concrete instrument proposal (regional proximity to technical universities), and an AI appendix with tool name, version, and prompts. Several observations. Section 7 relies on clustered standard errors rather than a formal heteroskedasticity test. VIF statistics are not reported despite the 0.947 correlation between ln_size and ln_wage, which is high enough to warrant an explicit multicollinearity check. The SCB reference year is inconsistent between the text (2024) and the reference list (2025). The exclusion of Blekinge and Norrbotten from the sample is stated but not justified. The econometric framework and model-selection logic are strong — the observations above are about formal diagnostics and reference-list consistency.",
+    "revision_required": false,
+    "oral_followup": false
+  },
+  "18": {
+    "grade": "B",
+    "feedback": "The econometric analysis is thorough, covering OLS, FE, and IV-FE with diagnostics, and the AI-use appendix (Gemini 3.1 Pro with a substantive list of prompts) is properly included. A few important observations. Section 5 states the Kleibergen–Paap F-statistic \"should not exceed a threshold of 10\" — the correct rule is the opposite: relevance for IV requires the F-statistic to *exceed* 10. The reported value signals a weak-instrument problem, and the results discussion treats it in the right direction, which makes the methodology statement an internal contradiction rather than a conceptual failure. The exclusion restriction is discussed alongside exogeneity rather than stated as a distinct condition. The Hausman-based model-selection threshold in the appendix note is set at p < 0.07 rather than the standard p < 0.05, without justification. The Acemoglu et al. (2022) reference lacks journal details in the reference list. The underlying econometric work is competent — the observations above are about internal consistency between the methodology statements and the results discussion.",
+    "revision_required": false,
+    "oral_followup": false
+  },
+  "19": {
+    "grade": "C",
+    "feedback": "Rapporten har en tydlig struktur och en ärlig tolkning av det icke-signifikanta AI-resultatet — att rapportera ett nollresultat rakt av är en styrka och inte en självklarhet. Några observationer. Tabell 3 redovisar t-värden inom parentes istället för standardfel. Tabell 1 saknar en N-kolumn. IV-avsnittet namnger relevans och exogenitet men inte exklusionsrestriktionen som separat tredje villkor. Hellsten-referensen har inkonsekvent årtal mellan text och referenslista. Den analytiska hållningen och resultattolkningen är stilrena — observationerna ovan handlar främst om formell diagnostik och tabellkonsistens.",
+    "revision_required": false,
+    "oral_followup": false
+  },
+  "20": {
+    "grade": "C",
+    "feedback": "Rapporten innehåller flera solida analytiska element och genomför paneldataanalysen med rimlig strukturering. En styrka värd att lyfta: Data-sektionen (p.4) beskriver de tre underliggande datakällorna separat och identifierar dem korrekt efter datatyp — Serrano som panel (\"en observation motsvarar ett företag vid ett visst år\") och platsannonsdatan som repeterat tvärsnitt snarare än panel (\"samma jobbannons följs inte över tid\"). Det är precis den distinktion uppgiften efterfrågar. Några observationer. Tabell 3 redovisar t-statistikor istället för klustrade standardfel, vilket tabellnoten felaktigt anger. I avsnitt 6 beskriver texten l_antanst som negativ i OLS-modellen medan Tabell 3 visar ett positivt värde (0,980) — ett faktafel mellan text och tabell. ai_dummy är en dummyvariabel i en log-nivå-modell och koefficienten är därmed en semi-elasticitet, inte en log-log-elasticitet; denna distinktion görs aldrig. IV-avsnittet namnger relevans och exogenitet men inte exklusionsrestriktionen som separat villkor.  Det analytiska ramverket fungerar — observationerna handlar främst om precision mellan text, tabell och referenser.",
+    "revision_required": false,
+    "oral_followup": false
+  },
+  "21": {
+    "grade": "C",
+    "feedback": "A solid report with clear progressive model-building across five specifications, a correct use of the Hausman framework, and a thoughtful treatment of the main econometric issues. A few targeted observations. The OLS(1) AI-adoption coefficient of 0.300 is interpreted using the linear approximation (≈30 per cent); for a dummy variable in a log-level model the exact effect is (e^0.300 − 1) ≈ 35 per cent, and the approximation begins to understate the effect at this magnitude. The IV discussion names relevance and the exclusion restriction but not the condition that the instrument must be uncorrelated with the error term as a distinct point. The policy paragraph in the conclusion is general rather than tied explicitly to the FE(5) coefficient magnitude. Strong report overall; the observations above would polish an already good piece of work.",
+    "revision_required": false,
+    "oral_followup": false
+  },
+  "22": {
+    "grade": "C",
+    "feedback": "The econometric work is well executed, with careful model selection, an honest treatment of identification challenges, and an AI-use appendix (Google Gemini Pro with a list of prompts). A few observations. The exclusion restriction is discussed informally as part of the IV motivation but is not named explicitly as a distinct condition. The correlation matrix discussion does not comment on the equity ratio (soliditet) and profit margin (vinstmarginal) correlations. Variable names are mixed Swedish/English in the specification equation, which breaks the reader's flow. The analytical core is solid; the observations above are about completeness of the IV discussion and presentation polish.",
+    "revision_required": false,
+    "oral_followup": false
+  },
+  "23": {
+    "grade": "E",
+    "feedback": "The report demonstrates a relevant FE analysis and runs appropriate diagnostic tests (Wald for heteroskedasticity and Wooldridge for serial correlation, both properly conducted with test statistics and p-values reported). This gives the revision a solid base to build on. Several points need to be addressed in the revised version to reach the passing threshold. The AI-use appendix is absent — this is a compulsory formal component and needs to be added. No formal Hausman test comparing FE and RE is conducted: the F-test used in Section 5 tests whether fixed effects are jointly zero (FE vs pooled OLS), not whether FE is preferred over RE, so it does not substitute for a Hausman test. The IV framework on p.7 acknowledges that IV estimation should be considered and names instrument relevance, but does not state all three conditions as distinct (and no suggestions of instrument are proposed). The concluding remarks section (Section 8) summarises the main coefficient in a short paragraph but does not discuss economic or policy implications, and does not revisit endogeneity or omitted variable bias as limitations. Section 4 describes the sample as a single panel based on the Serrano database, but the assignment data is based on three datasets — Serrano, Job ads, and Occupational information. For the revision, describe for the data you use the source of data, type of data (e.g., cross-section, panel, etc.), year(s) of observations, and population, as the brief asks in the Data-section instructions. The brief's short description of each dataset states the observation unit, which is the starting point for working out the type. The underlying FE analysis is workable; the revision is about the AI-use appendix, the model-selection test, a more complete discussion of the IV framework and the study's limitations, and a fuller characterisation of the data sources.",
+    "revision_required": true,
+    "oral_followup": false,
+    "revision_note": "You will receive an E provided the revision is completed satisfactorily. Address the points listed in the feedback below and resubmit by 1 May 2026."
+  },
+  "24": {
+    "grade": "D",
+    "feedback": "Rapporten har en tydlig struktur och en ärlig hantering av hypotes-resultat-avvikelsen — att slutsatsen erkänner att det positiva resultatet motsäger den ursprungliga hypotesen är en styrka och inte en självklarhet. Några observationer. Regressionsekvationen i avsnitt 5 saknar year fixed effects och firm fixed-effects-termen u_i; Tabell 6.1 inkluderar inga årsdummies, vilket lämnar makrochocker (finanskrisen, covid) okontrollerade och kan snedvrida AI-koefficienten. Multikollinearitetstestet i avsnitt 7 är felspecificerat: det rapporterade R²-värdet (0,053) matchar OLS-modellens R², inte en auxiliär regression per variabel — VIF-värden hade varit den rätta diagnostiken. IV-diskussionen namnger inte alla tre villkor (relevans, exogenitet, exklusionsrestriktion), och inget konkret instrument föreslås. AI-appendixet saknar de faktiska prompterna. Den analytiska hållningen är stark — observationerna handlar främst om formell specifikation och dokumentation.",
+    "revision_required": false,
+    "oral_followup": false
+  }
+}

@@ -1,0 +1,61 @@
+name: Auto-expire results.json
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  expire:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Expire results.json if past valid_until
+        run: |
+          python3 <<'PY'
+          import json, datetime, pathlib, sys
+          p = pathlib.Path("results.json")
+          data = json.loads(p.read_text(encoding="utf-8"))
+          meta = data.get("_meta", {})
+          valid_until = meta.get("valid_until")
+          if not valid_until:
+              print("No valid_until set; nothing to do.")
+              sys.exit(0)
+          if meta.get("expired"):
+              print("Already expired; nothing to do.")
+              sys.exit(0)
+          today = datetime.date.today()
+          expiry = datetime.date.fromisoformat(valid_until)
+          if today <= expiry:
+              print(f"Still valid (today {today} <= {valid_until}); nothing to do.")
+              sys.exit(0)
+          print(f"Expired ({today} > {valid_until}); replacing results.json with stub.")
+          stub = {
+              "_meta": {
+                  "title": meta.get("title", "Assignment Results"),
+                  "course": meta.get("course"),
+                  "semester": meta.get("semester"),
+                  "assignment": meta.get("assignment"),
+                  "valid_until": valid_until,
+                  "expired": True
+              }
+          }
+          p.write_text(json.dumps(stub, ensure_ascii=False, indent=2) + "\n",
+                       encoding="utf-8")
+          PY
+
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet; then
+            echo "No changes to commit."
+          else
+            git config user.name  "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add results.json
+            git commit -m "Auto-expire results.json (past valid_until)"
+            git push
+          fi
