@@ -362,6 +362,17 @@
                     }
                 }
             }
+
+            // Soft one-per-device: if an ID was already successfully looked up
+            // on this browser, show that student's (current) result directly
+            // and skip the input form. Lookup is still possible with a fresh
+            // browser profile — this is friction, not enforcement.
+            let prevId = null;
+            try { prevId = localStorage.getItem('na306g_used_id'); } catch (e) {}
+            if (prevId && resultsData[prevId]) {
+                document.getElementById('student-id').value = prevId;
+                lookup();
+            }
         } catch (e) {
             document.getElementById('lookup-view').style.display = 'none';
             document.getElementById('expired-view').style.display = 'block';
@@ -397,6 +408,7 @@
         }
 
         used = true;
+        try { localStorage.setItem('na306g_used_id', idInput); } catch (e) {}
         document.getElementById('lookup-btn').disabled = true;
         document.getElementById('student-id').disabled = true;
         document.getElementById('lookup-view').style.display = 'none';
